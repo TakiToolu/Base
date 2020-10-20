@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="root">
+    <div id="clock"></div>
+    <div class="pointer" id="hour"></div>
+    <div class="pointer" id="min"></div>
+</div>
+<style>
+    #clock {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        border: 1px solid slategrey;
+        border-radius: 50px;
+    }
+    .pointer {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        border-top: 4px  solid indianred;
+        transform-origin: 0% 50%;
+    }
+    #hour {
+        width: 25px;
+        z-index: 10;
+    }
+    #min {
+        width: 40px;
+        border-top:4px  solid  cadetblue;
+    }
+</style>
+<script>
+  function time(hour, min) {
+    var hourDiv = document.getElementById("hour");
+    var minDiv = document.getElementById("min");
+    var minDeg = min / 60 * 360 - 90;
+    var hourDeg = hour / 12 * 360 + (min / 60) * (360 / 12) - 90;
+    hourDiv.style.transform = `rotate(${hourDeg}deg)`;
+    console.log(hourDiv.style.transform);
+    minDiv.style.transform = `rotate(${minDeg}deg)`;
+    console.log(minDiv.style.transform);
+  }
+  time(6, 35);
+</script>
+</body>
+</html>
