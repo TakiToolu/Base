@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            position: relative;
+            display: table;
+            border: indianred solid 1px;
+            background-color: indianred;
+        }
+        .box{
+            border: slategrey solid 1px;
+            background-color: antiquewhite;
+            display: flex;
+            position: absolute;
+            width:calc(100vw - 100px);
+            height:calc(50vw - 50px) ;
+            left: 50px;
+            top:calc(50vh - 25vw + 25px);
+            /*text-align: center;*/
+            justify-content: center;
+            justify-items: center;
+            padding:0 20px;
+            vertical-align: middle
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box">
+        //这里是多行文本
+        多数情况下最高的绘制频率只能是每秒60帧(frame per second)，对应于显示器的60Hz，低于这个频率，肉眼感觉画面卡顿不流畅，高于这个频率，及其耗费性能。因此通常采用的时间间隔就是1/60,也就是16.7ms。
+    </div>
+</div>
+
+</body>
+</html>
