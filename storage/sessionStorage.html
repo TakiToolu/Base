@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SessionStorage</title>
+    <script type="text/javascript">
+      window.onload = function() {
+        //首先获得body中的3个input元素
+        var msg = document.getElementById("msg"); //文本框要输入的内容
+        var getData = document.getElementById("getData"); //获取数据
+        var setData = document.getElementById("setData"); //保存数据
+        var removeData = document.getElementById("removeData"); //移除数据
+        setData.onclick = function() //存入数据
+        {
+          if (msg.value) {
+            sessionStorage.setItem("data", msg.value); //把data对应的值保存到sessionStorage
+            alert("信息已保存到data字段中");
+          } else {
+            alert("信息不能为空");
+          }
+        }
+        getData.onclick = function() {
+          //获取数据
+          var msg = sessionStorage.getItem("data");
+          if (msg) {
+            alert("data字段中的值为：" + msg); //把data对应的值弹出来
+          } else {
+            alert("data字段无值！");
+          }
+        }
+        removeData.onclick = function() //移除数据
+        {
+          var msg = sessionStorage.getItem("data");
+          sessionStorage.removeChild(msg);
+        }
+      }
+    </script>
+</head>
+<body>
+
+    <input id="msg" type="text" />
+    <input id="setData" type="button" value="保存数据" />
+    <input id="getData" type="button" value="获取数据" />
+    <input id="removeData" type="button" value="移除数据" />
+</body>
+</html>

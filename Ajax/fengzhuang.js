@@ -1,12 +1,19 @@
-var getJson=function (url){
+var myAjax=function (url='',type='GET',dataType='json'){
   var promise=new Promise(function(resolve,reject){
-    var client=new XMLHttpRequest();
-    client.open('GET',url);
-    client.onreadystatechange=handler;
-    client.responseType='json';
-    client.setRequestHeader("Accept","application/json");
-    client.send();
-
+    var xhr=new XMLHttpRequest();
+    xhr.open(type,url);
+    xhr.onreadystatechange=handler;
+    // handler的替代
+    // xhr.onload=function(){
+    //   //xhr.readState==4 xhr.status==200
+    //   resolve(xhr.response)
+    // }
+    // xhr.onerror=function(err){
+    //   reject(err);
+    // }
+    xhr.responseType=dataType;
+    xhr.setRequestHeader("Accept","application/json");
+    xhr.send();
     function handler(){
       if(this.readyState!==4){
         return ;
@@ -21,7 +28,7 @@ var getJson=function (url){
   return promise;
 }
 
-getJson('/posts.json').then(function(json){
+myAjax('/posts.json').then(function(json){
   console.log('返回的内容'+json);
 },function(error){
   console.log('出错了',error);
