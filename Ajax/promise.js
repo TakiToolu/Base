@@ -1,6 +1,6 @@
 let pro= new Promise((resolve,reject)=>{
   let xhr=new XMLHttpRequest();
-  xhr,open('GET',url,true);
+  xhr.open('GET',url,true);
   xhr.onreadystatechange=function(){
     if(this.readyState==4){
       if(this.status==200){
@@ -15,3 +15,5 @@ let pro= new Promise((resolve,reject)=>{
     }
   }
 })
+
+//实现promise.all

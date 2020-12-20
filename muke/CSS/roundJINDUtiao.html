@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #round{
+            width: 200px;
+            height:200px;
+            border:20px solid darkseagreen;
+            border-radius: 50%;
+        }
+        .mask{
+            position:absolute;
+            width: 240px;
+            height:240px;
+            top:0px;
+            left: 0px;
+            background:transparent;
+            display: flex;
+        }
+        #lwrap #rwrap{
+            display: flex;
+            position: absolute;
+            width:50%;
+            height: 100%;
+            background: transparent;
+        }
+        #lwrap{
+            left:0px;
+        }
+        #rwrap{
+            right:0px;
+        }
+        #mask-l{
+            width:100%;
+            height: 100%;
+            background: #1d7db1;
+            display: flex;
+            transform-origin: left center;
+        }
+        #mask-r{
+            width:100%;
+            height: 100%;
+            background: #3c763d;
+            display: flex;
+            transform-origin: left center;
+
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="mask">
+        <div id="lwrap">
+            <div id="mask-l"></div>
+        </div>
+       <div id="rwrap">
+           <div id="mask-r"></div>
+       </div>
+
+    </div>
+    <div id="round"></div>
+</div>
+
+</body>
+</html>

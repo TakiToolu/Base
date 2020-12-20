@@ -10,3 +10,4 @@ var aa=foo();
 aa();
 aa();
 aa();
+aa();

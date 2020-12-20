@@ -7,3 +7,15 @@ function curry(fn){
     return fn.apply(finalargs);
   }
 }
+
+function curry(fn){
+  let arg=Array.prototype.slice(arguments,1);
+  return function(){
+    let innerarg=Array.from(arguments);
+    arg=arg.concat(innerarg);
+    return fn.apply(arg);
+  }
+}
+let geturl=curry(getUrl,'http://localhost:8080/','auth');
+let login=geturl('/login');
+let logout=geturl('/logput')

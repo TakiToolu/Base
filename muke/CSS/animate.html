@@ -1,0 +1,102 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div
+        {
+            width:100px;
+            height:100px;
+            background:red;
+            position:relative;
+            animation:myfirst 5s;
+            -moz-animation:myfirst 5s; /* Firefox */
+            -webkit-animation:myfirst 5s; /* Safari and Chrome */
+            -o-animation:myfirst 5s; /* Opera */
+        }
+
+        @keyframes myfirst
+        {
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+
+        @-moz-keyframes myfirst /* Firefox */
+        {
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+
+        @-webkit-keyframes myfirst /* Safari and Chrome */
+        {
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+
+        @-o-keyframes myfirst /* Opera */
+        {
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+    </style>
+</head>
+<body>
+
+<p><b>注释：</b>本例在 Internet Explorer 中无效。</p>
+
+<div></div>
+
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .box{
+        text-align: center;
+        width: 50px;
+        height: 80px;
+        border-radius: 10px;
+        background: black;
+        position: absolute;
+        animation:bimg1 2s ease-out alternate,bimg2 2s ease-in alternate;
+        animation-iteration-count: infinite;
+        /*ease-out ,和ease-in 顺序不能反*/
+    }
+    .main{width: 30px;height: 10px;background: whitesmoke;margin: 85% auto;border-radius: 2px}
+    @keyframes bimg1 {
+        0% {top: 0;
+            /*transform: rotate(0deg)*/
+        }
+        100% {top: 200px;
+            /*transform: rotate(-90deg)*/
+        }
+    }
+    @keyframes bimg2 {
+        0%  {left: 0;}
+        100% {left: 400px;}
+    }
+
+</style>
+<body>
+<div class="box">
+    <div class="main"></div>
+</div>
+</body>
+</html>

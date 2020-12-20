@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #round{
+            width:100px;
+            height:100px;
+            position:absolute;
+            border:1px solid black;
+            /*border-right:50px solid #3c763d;*/
+            /*border-top:50px solid #1d7db1;*/
+            border-radius: 50%;
+            /*clip: rect(0,100px,40px,0px);*/
+            /*transform: rotate(-30deg);*/
+            overflow: hidden;
+        }
+        #shan{
+            width:50px;
+            height: 50px;
+            background-color: #1d7db1;
+            transform: skewX(15deg);
+            transform-origin: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="round">
+        <div id="shan">
+
+        </div>
+    </div>
+    <script>
+      function clipImage()
+      {
+        document.getElementById("shan").style.clip="rect(0px,50px,50px,0px)";
+      }
+      // clipImage()
+    </script>
+</body>
+</html>

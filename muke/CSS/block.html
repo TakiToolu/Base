@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #clock{
+            width: 200px;
+            height:200px;
+            background: #B6B6B6;
+            border-radius: 50%;
+            border:5px solid #1b6d85;
+            position: relative;
+        }
+        #hour{
+            width:8px;
+            height: 50px;
+            background: #0d3462;
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translateX(-50%);
+            transform-origin: top center;
+        }
+        #min{
+            width:5px;
+            height: 80px;
+            background: #1d7db1;
+            position:absolute;
+            left:50%;
+            top:50%;
+            /*z-index:10;*/
+            transform:translateX(-50%);
+            transform-origin: top center;
+        }
+        #point{
+            width: 10px;
+            height: 10px;
+            background: #3c763d;
+            border-radius: 50%;
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-25%,-50%);
+        }
+    </style>
+</head>
+<body>
+<div id="clock">
+    <div id="hour"></div>
+    <div id="min"></div>
+    <div id="point"></div>
+</div>
+<script type="text/javascript">
+    function clock(h,m){
+      let hour=document.getElementById('hour');
+      let min=document.getElementById('min');
+      let mDeg=-180+m*6;
+      let hDeg=-180+h*30+m/2;
+      console.log(mDeg,hDeg);
+      hour.style.transform=`rotate(${hDeg}deg)`
+      min.style.transform=`rotate(${mDeg}deg)`
+    }
+    clock(4,0)
+</script>
+</body>
+</html>

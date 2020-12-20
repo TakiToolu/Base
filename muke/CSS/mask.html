@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #mask{
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.5);
+            position:absolute;
+            top:0px;
+            left:0px;
+            display:none;
+        }
+        #message{
+            background: #1b6d85;
+            position:absolute;
+            top:50%;
+            left:50%;
+            height:150px;
+            width:250px;
+            transform: translate(-50%,-50%);
+            display:none;
+        }
+        #info{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            width:200px;
+            height:100px;
+            margin:50% auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="mask"></div>
+    <div id="message">
+
+        <button id="close">关闭</button>
+        <div>
+            这里是提示消息
+        </div>
+    </div>
+    <div id="info">
+        hello world！
+        <button id="open">点击弹出遮罩</button>
+    </div>
+</body>
+<script type="text/javascript">
+    window.onload=function(){
+      let open=document.getElementById('open');
+      let close=document.getElementById('close');
+      let mask=document.getElementById('mask');
+      let message=document.getElementById('message');
+      open.onclick=function(){
+        mask.style.display='block';
+        message.style.display='block';
+      }
+      close.onclick=function(){
+        mask.style.display='none';
+        message.style.display='none';
+      }
+    }
+</script>
+</html>
