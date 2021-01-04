@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            list-style: none;
+        }
+        #app{
+            width: 100%;
+
+            display: flex;
+
+        }
+        .search{
+            display: flex;
+            position:absolute;
+            left:100px;
+            width: 400px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        image{
+            /*display: block;*/
+            height: 50px;
+            width: 100px;
+        }
+        #iwrap{
+            display: flex;
+            width: 100%;
+            height: auto;
+        }
+        #input{
+            height: 1rem;
+            width: 100%;
+            /*display: flex;*/
+        }
+        #btn{
+            width: 30%;
+        }
+        #meswrap{
+            width: 100%;
+            position:relative;
+
+            overflow: auto;
+            border: #1d7db1 solid 1px;
+        }
+        #mes{
+            width: 100%;
+            position:absolute;
+            display: none;
+            border: #1d7db1 solid 1px;
+        }
+
+    </style>
+</head>
+<body>
+<wrap id="app">
+    <div class="search">
+        <image src="
+ https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=205441424,1768829584&fm=26&gp=0.jpg"></image>
+        <div id="iwrap">
+            <input type="text" id="input">
+            <button id="btn">百度一下</button>
+        </div>
+        <div id="meswrap">
+            <ul id="message">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+    </div>
+</wrap>
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+    // var input=document.getElementById('input');
+    // var mes=document.getElementById('message');
+    // var btn=document.getElementById('btn');
+    var input=$('#input');
+    var mes=$('#message');
+    var meswrap=$('#meswrap');
+    var btn=$('#btn');
+    var iwrap=$('#iwrap')
+    // input.addEventListener('keyup',()=>{
+    input.on('keyup',function(){
+        // var text=input.value;
+      var text=$(this).val();
+        var url='https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + text + '&json=1&p=3&sid=20144_1467_19033_20515_18240_17949_20388_20456_18133_17001_15202_11615&req=2&csor=2&pwd=s&cb=jQuery110207612423721154653_1467355506619&_=1467355506623'
+      // $.ajax({
+      //     url:url,
+      //     type:'GET',
+      //     dataType:'json',
+      //     success:function(data){
+      //       var data=data.s;
+      //       var lis=data.reduce(function(result,item){
+      //         return result+'<li>'+item+'<li>';
+      //       },'')
+      //       // mes.appendChild(lis);
+      //       console.log(lis);
+      //     }
+      //   })
+      //这里百度不允许，就直接使用现有数据
+      var data=['12345','qwert','asdf','zxcv','zcxv','1','23','323'];
+      // console.log(text.length);
+      var lis=data.slice(0,text.length).reduce(function(result,item){
+                return result+'<li>'+item+'<li>';
+              },'')
+      mes.html(lis)
+      mes.show().css({
+        top:input.offsetTop+input.height,
+        left:input.offsetLeft,
+      })
+    })
+
+</script>
+
+</body>
+</html>

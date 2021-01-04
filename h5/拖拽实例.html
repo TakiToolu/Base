@@ -38,11 +38,8 @@
                var newTop = event.clientY - disY;
                iSpeedX = newLeft - lastX;
                iSpeedY = newTop - lastY;
-
                lastX = newLeft;
                lastY = newTop;
-
-
             //    var oSpan = document.createElement('span');
             //    oSpan.style.position = 'absolute';
             //    oSpan.style.left = newLeft + 'px';
@@ -51,7 +48,6 @@
             //    oSpan.style.height = '5px';
             //    oSpan.style.backgroundColor = 'black';
             //    document.body.appendChild(oSpan);
-
                self.style.left = newLeft + 'px';
                self.style.top = newTop + 'px';
            }
@@ -74,37 +70,31 @@
                     iSpeedX *= 0.8;
                     newTop = document.documentElement.clientHeight - dom.clientHeight;
                 }
-
                 if (newTop <= 0) {
                     iSpeedY *= -1;
                     iSpeedY *= 0.8;
                     iSpeedX *= 0.8;                    
                     newTop = 0;
-                }
 
+                }
                 if (newLeft >= document.documentElement.clientWidth - dom.clientWidth) {
                     iSpeedX *= -1;
                     iSpeedY *= 0.8;
                     iSpeedX *= 0.8;                    
                     newLeft = document.documentElement.clientWidth - dom.clientWidth;
                 }
-
                 if (newLeft <= 0) {
                     iSpeedX *= -1;
                     iSpeedY *= 0.8;
                     iSpeedX *= 0.8;                    
                     newLeft = 0;
                 }
-
                 if (Math.abs(iSpeedX) < 1) {
                     iSpeedX = 0;
                 }
-
                 if (Math.abs(iSpeedY) < 1) {
                     iSpeedY = 0;
                 }
-
-
                 if (iSpeedX == 0 && iSpeedY == 0 && newTop == document.documentElement.clientHeight - dom.clientHeight) {
                     clearInterval(dom.timer);
                     console.log('over')

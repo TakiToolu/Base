@@ -38,3 +38,27 @@ class EventEmitter {
     this.onceEvents[type].push(cb)
   }
 }
+
+class myEvent{
+  constructor(){
+    this.obj={};
+  }
+  on(type,cb){
+    let temp=this.obj[type]||[];
+    temp.push(cb);
+    this.obj[type]=temp;
+  }
+  emit(type){
+    if(this.obj[type]){
+      let cbs=this.obj[type];
+      cbs.forEach((cb)=>{
+        cb();//.apply(this,[...arguments].slice(1));
+      })
+    }
+  }
+  off(type){
+    if(this.obj[type]){
+      delete this.obj.type
+    }
+  }
+}

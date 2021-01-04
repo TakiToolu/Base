@@ -1,3 +1,4 @@
+/*
 //写一个async/await(…) 实现sleep函数（我知道需要return一个Promise对象）
 
 (async () => {
@@ -12,3 +13,16 @@ function sleep(time){
     setTimeout(resolve, time);
   })
 }
+*/
+
+function sleep(t){
+  return new Promise(resolve=>{
+    setTimeout(resolve,t)
+  })
+}
+
+(async()=>{
+  console.log('11');
+  await sleep(1000 );
+  console.log('22');
+})()

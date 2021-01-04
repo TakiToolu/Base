@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        img{
+            vertical-align: top;
+        }
+        .box{
+            width: 500px;
+            height: 312px;
+            margin: 100px auto;
+            padding: 5px;
+            border: 1px solid pink;
+        }
+        .inner {
+            width: 500px;
+            height: 312px;
+            background-color: pink;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .inner ul {
+            /* 如果没有设定width为1000%的话，IMG设定左浮动会失效，因为宽度已经被限制 */
+            width: 1000%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .inner li{
+            float: left;
+        }
+        /* 下面是导航 */
+        .square{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        .square span{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: #ffffff;
+            line-height: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .square span.current{
+            background-color: orangered;
+            color: #ffffff;
+        }
+    </style>
+
+</head>
+<body>
+<div id="box">
+    <div class="inner">
+        <ul>
+            <li><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2853553659,1775735885&fm=26&gp=0.jpg" alt=""/></li>
+            <li><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3877876735,3516357734&fm=26&gp=0.jpg" alt=""/></li>
+            <li><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20191219%2F6fd0d8da7947581171e13c6f339a07b4.png&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1612178161&t=0fec75c1533f2d9e91b9b0c52595fe66" alt=""/></li>
+            <li><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=498703863,3028011910&fm=11&gp=0.jpg" alt=""/></li>
+            <li><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.zhu1234.com%2Fwp-content%2Fuploads%2F2020%2F02%2Ftimg-5-4.jpg&refer=http%3A%2F%2Fwww.zhu1234.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1612178161&t=01dec754bb6a8014c6924bbeaa64c909" alt=""/></li>
+            <li><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp.qqan.com%2Fup%2F2020-6%2F15911630817857359.jpg&refer=http%3A%2F%2Fp.qqan.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1612178161&t=a1ebcd1c7761d6411e4aea4780114825" alt=""/></li>
+        </ul>
+        <div class="square">
+            <span class="current">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+        </div>
+    </div>
+</div>
+
+
+<script>
+  var box = document.getElementById("box");
+  var inner = box.children[0];
+  var ulObj = inner.children[0];
+  var spanObjs = inner.children[1].children;
+  var imgWidth = inner.offsetWidth;
+  for(var i=0;i<spanObjs.length;i++){
+    spanObjs[i].setAttribute("index",i);
+    spanObjs[i].onmouseover = function(){
+      for(var j=0;j<spanObjs.length;j++){
+        // 所有span的进入都清空
+        spanObjs[j].removeAttribute("class");
+      }
+      this.className = "current";
+      var index = this.getAttribute("index");
+      animate(ulObj,-imgWidth*index);
+    };
+  }
+  function animate(element,target){
+    clearInterval(element.timeId);
+    element.timeId = setInterval(function(){
+      var step = 10;
+      var current = element.offsetLeft;
+      step = current<target?step:-step;
+      current+=step;
+      if(Math.abs(current-target)>Math.abs(step)){
+        element.style.left = current+"px";
+      } else{
+        clearInterval(element.timeId);
+        element.style.left = target+"px";
+      }
+    },30);
+  }
+</script>
+
+</body>
+</html>
