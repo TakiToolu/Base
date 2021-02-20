@@ -27,3 +27,20 @@ girl.on('sad',shopping);
 girl.emit('sad','zxx','aaa');
 
 
+let vm0=new Vue();
+
+let vm1=new Vue({
+  create(){
+    vm0.$on('enaame',(val)=>{
+      this.val=val;
+    })
+  }
+})
+
+let vm2=new Vue({
+  methods:{
+    fun(){
+      vm0.$emit(ename,this.state);
+    }
+  }
+})

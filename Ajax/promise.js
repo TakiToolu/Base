@@ -47,8 +47,12 @@ class myPromise{
       this.value=value;
       this.callbacks.forEach(item=>{
         item.call(this,value);
-        return this;
+
       })
+      this.state=PENDING;
+      this.callbacks=[];
+      this.failbacks=[];
+      return this;
     }
   }
   reject(error){
@@ -56,8 +60,12 @@ class myPromise{
       this.state=REJECTED;
       this.failbacks.forEach(item=>{
         item.call(this,error);
-        return this;
+
       })
+      this.state=PENDING;
+      this.callbacks=[];
+      this.failbacks=[];
+      return this;
     }
   }
   then(resolvefn,rejectfn){
@@ -110,7 +118,7 @@ function promiseAll(promises){
   for(let i=0;i<promises.length;i++){
     promises[i].then(value =>{
       res.push(value);
-      if(res,length==promises.length){
+      if(res.length==promises.length){
         return resolve(res);
       }
     },error=>{
@@ -134,3 +142,18 @@ function promiseRace(promises){
 
 
 //一个promise list，一次最多只能执行n个，当全部执行完成之后，调用callback
+function send(promises,k,cb){
+  let queue=0,i=0;
+  while(i<promises.length){
+    if(queue<promises.length){
+      for(let j=i;j<i+k-queue;j++){
+        i++;
+        queue++;
+        promises[j].then(()=>{
+          queue--;
+        })
+      }
+    }
+  }
+  cb();
+}

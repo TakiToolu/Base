@@ -9,6 +9,7 @@
             height:100px;
             position:absolute;
             border:1px solid black;
+            background-color: #9c9c9c;
             /*border-right:50px solid #3c763d;*/
             /*border-top:50px solid #1d7db1;*/
             border-radius: 50%;
@@ -16,21 +17,34 @@
             /*transform: rotate(-30deg);*/
             overflow: hidden;
         }
-        #shan{
-            width:500px;
-            height: 500px;
-            background-color: #1d7db1;
-            transform-origin: 0% 0%;
-            transform:translate(50px,50px) rotate(-90deg) skew(-75deg);
+        .shan{
+            width:50px;
+            height: 100px;
+
+            background-color: white;
+            border:1px solid black;
+            /*transform-origin: 0% 0%;*/
+            /*transform:translate(50px,50px) rotate(-90deg) skew(-75deg);*/
             /*transform: ;*/
 
         }
+        #right{
+            postion:absolute;
+            left:50px;
+            background-color: yellow;
+            transform-origin: 0% 50%;
+            /*transform:translate(50px,0px) rotate(-90deg) ;*/
+        }
+
     </style>
 </head>
 <body>
 
     <div id="round">
-        <div id="shan">
+        <div id="left" class="shan">
+
+        </div>
+        <div id="right" class="shan">
 
         </div>
     </div>

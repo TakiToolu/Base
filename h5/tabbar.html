@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        ul{
+            width: 400px;
+            height: 100px;
+            border: black solid 2px;
+            background-color: #B6B6B6;
+            /*overflow: hidden;*/
+        }
+        ul li{
+            list-style: none;
+            height: 100px;
+            border: black solid 1px;
+            width: 100%;
+            float: left;
+        }
+        ul li:first-child:nth-last-child(2),ul li:first-child:nth-last-child(2)~li{
+            width: 50%;
+        }
+        ul li:first-child:nth-last-child(3),ul li:first-child:nth-last-child(3)~li{
+            width: 32%;
+        }
+        ul li:first-child:nth-last-child(4),ul li:first-child:nth-last-child(4)~li{
+            width: 24.3%;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+<!--    <li></li>-->
+</ul>
+
+</body>
+</html>
