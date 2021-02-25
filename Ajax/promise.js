@@ -113,19 +113,6 @@ Promise.prototype.then=function (onResolved,onReject){
   })
 }
 
-function promiseAll(promises){
-  let res=[];
-  for(let i=0;i<promises.length;i++){
-    promises[i].then(value =>{
-      res.push(value);
-      if(res.length==promises.length){
-        return resolve(res);
-      }
-    },error=>{
-      reject(error);
-    })
-  }
-}
 
 function promiseRace(promises){
   return new Promise(function(resolve,reject){
@@ -137,9 +124,36 @@ function promiseRace(promises){
         })
     }
   })
+}
+function promiseAll(promises){
+  return new Promise(function(resolve,reject){
+    let res=[];
+    for(let i=0;i<promises.length;i++){
+      promises[i].then(value=>{
+          res.push(value);
+          if(res.length==promises.length){
+            resolve(res);
+          }
+        },err=>{
+            reject(err)
+          }
+      )
+    }
+  })
 
 }
 
+function promiseRace(promises){
+  return new Promise(function(resolve,reject){
+    for(let i=0;i<promises.length;i++){
+      promises[i].then(value=>{
+        resolve(value);
+      },err=>{
+        reject(err);
+      })
+    }
+  })
+}
 
 //一个promise list，一次最多只能执行n个，当全部执行完成之后，调用callback
 function send(promises,k,cb){
